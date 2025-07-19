@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.55 0.15 142);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.65 0.18 142);
+  --primary-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+/* SUMATIN-specific styles */
+@layer components {
+  .sumatin-gradient {
+    @apply bg-gradient-to-br from-green-500 to-green-700;
+  }
+  
+  .sumatin-card {
+    @apply bg-card border border-border rounded-lg shadow-sm;
+  }
+  
+  .sumatin-sidebar {
+    @apply bg-sidebar border-r border-sidebar-border;
+  }
+  
+  .sumatin-header {
+    @apply bg-background border-b border-border;
+  }
+  
+  .sumatin-button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-2 focus:ring-primary/20;
+  }
+  
+  .sumatin-button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 focus:ring-2 focus:ring-secondary/20;
+  }
+  
+  .sumatin-input {
+    @apply bg-background border border-input rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent;
+  }
+  
+  .sumatin-table {
+    @apply w-full border-collapse;
+  }
+  
+  .sumatin-table th {
+    @apply bg-muted text-muted-foreground font-medium text-left px-4 py-3 border-b border-border;
+  }
+  
+  .sumatin-table td {
+    @apply px-4 py-3 border-b border-border;
+  }
+  
+  .sumatin-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .sumatin-badge-success {
+    @apply bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400;
+  }
+  
+  .sumatin-badge-warning {
+    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400;
+  }
+  
+  .sumatin-badge-error {
+    @apply bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400;
+  }
+  
+  .sumatin-badge-info {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400;
+  }
+  
+  .sumatin-stats-card {
+    @apply sumatin-card p-6 hover:shadow-md transition-shadow;
+  }
+  
+  .sumatin-form-group {
+    @apply space-y-2;
+  }
+  
+  .sumatin-form-label {
+    @apply text-sm font-medium text-foreground;
+  }
+  
+  .sumatin-form-error {
+    @apply text-sm text-destructive;
+  }
+  
+  .sumatin-loading {
+    @apply animate-spin rounded-full border-2 border-muted border-t-primary;
+  }
+  
+  .sumatin-avatar {
+    @apply rounded-full bg-muted flex items-center justify-center text-muted-foreground font-medium;
+  }
+  
+  .sumatin-nav-item {
+    @apply flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors;
+  }
+  
+  .sumatin-nav-item-active {
+    @apply bg-primary text-primary-foreground;
+  }
+  
+  .sumatin-nav-item-inactive {
+    @apply text-muted-foreground hover:text-foreground hover:bg-muted;
+  }
+  
+  .sumatin-dropdown {
+    @apply bg-popover border border-border rounded-md shadow-lg;
+  }
+  
+  .sumatin-dropdown-item {
+    @apply px-3 py-2 text-sm cursor-pointer hover:bg-muted transition-colors;
+  }
+  
+  .sumatin-modal-overlay {
+    @apply fixed inset-0 bg-black/50 z-50;
+  }
+  
+  .sumatin-modal-content {
+    @apply bg-background border border-border rounded-lg shadow-lg max-w-md w-full mx-4;
+  }
+  
+  .sumatin-toast {
+    @apply bg-background border border-border rounded-md shadow-lg p-4;
+  }
+  
+  .sumatin-toast-success {
+    @apply border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-900/20;
+  }
+  
+  .sumatin-toast-error {
+    @apply border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-900/20;
+  }
+  
+  .sumatin-toast-warning {
+    @apply border-yellow-200 bg-yellow-50 dark:border-yellow-800 dark:bg-yellow-900/20;
+  }
+  
+  .sumatin-toast-info {
+    @apply border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-900/20;
+  }
+}
+
+/* Custom scrollbar */
+@layer utilities {
+  .sumatin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: theme(colors.muted) transparent;
+  }
+  
+  .sumatin-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .sumatin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .sumatin-scrollbar::-webkit-scrollbar-thumb {
+    background: theme(colors.muted);
+    border-radius: 3px;
+  }
+  
+  .sumatin-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: theme(colors.muted-foreground);
+  }
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.5s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
